@@ -5,15 +5,15 @@ def upload_path(instance, filename):
 
 class ChainSkill(models.Model):
      
-    skill_id = models.OneToOneField("Character", verbose_name="chain skill", on_delete=models.CASCADE, db_column="chain_skill")
-    name = models.CharField(max_length=100)
-    icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None)
-    lv1_tiles = models.PositiveSmallIntegerField()
-    lv1_text = models.TextField()
-    lv2_tiles = models.PositiveSmallIntegerField()
-    lv2_text = models.TextField()
-    lv3_tiles = models.PositiveSmallIntegerField()
-    lv3_text = models.TextField()
+    skill_id = models.OneToOneField("Character", related_name="chain_skill", on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True, null=True)
+    lv1_tiles = models.PositiveSmallIntegerField(blank=True, null=True)
+    lv1_text = models.TextField(blank=True, null=True)
+    lv2_tiles = models.PositiveSmallIntegerField(blank=True, null=True)
+    lv2_text = models.TextField(blank=True, null=True)
+    lv3_tiles = models.PositiveSmallIntegerField(blank=True, null=True)
+    lv3_text = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name = "chain skill"

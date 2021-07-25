@@ -5,23 +5,23 @@ def upload_path(instance, filename):
 
 class EquipSkill(models.Model):
      
-    skill_id = models.OneToOneField("Character", verbose_name="equip skill", on_delete=models.CASCADE, db_column="equip_skill")
-    name = models.CharField(max_length=100)
-    icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None)
-    lv1_text = models.TextField()
-    lv3_text = models.TextField()
-    lv6_text = models.TextField()
-    lv10_text = models.TextField()
+    skill_id = models.OneToOneField("Character", related_name="equip_skill", on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True, null=True)
+    lv1_text = models.TextField(blank=True, null=True)
+    lv3_text = models.TextField(blank=True, null=True)
+    lv6_text = models.TextField(blank=True, null=True)
+    lv10_text = models.TextField(blank=True, null=True)
     asc2_enhance = models.BooleanField(default=False)
-    asc2_lv1_text = models.TextField(null=True)
-    asc2_lv3_text = models.TextField(null=True)
-    asc2_lv6_text = models.TextField(null=True)
-    asc2_lv10_text = models.TextField(null=True)
+    asc2_lv1_text = models.TextField(blank=True, null=True)
+    asc2_lv3_text = models.TextField(blank=True, null=True)
+    asc2_lv6_text = models.TextField(blank=True, null=True)
+    asc2_lv10_text = models.TextField(blank=True, null=True)
     asc3_enhance = models.BooleanField(default=False)
-    asc3_lv1_text = models.TextField(null=True)
-    asc3_lv3_text = models.TextField(null=True)
-    asc3_lv6_text = models.TextField(null=True)
-    asc3_lv10_text = models.TextField(null=True)
+    asc3_lv1_text = models.TextField(blank=True, null=True)
+    asc3_lv3_text = models.TextField(blank=True, null=True)
+    asc3_lv6_text = models.TextField(blank=True, null=True)
+    asc3_lv10_text = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name = "equip skill"

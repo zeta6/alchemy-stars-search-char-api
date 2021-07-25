@@ -8,6 +8,13 @@ from .models.char_class import CharClass
 from .models.faction import Faction 
 from .models.personality import Personality
 from .models.chain_skill import ChainSkill
+from .models.active_skill import ActiveSkill
+from .models.equip_skill import EquipSkill
+from .models.equipment import Equipment
+from .models.breakthrough import Breakthrough
+from .models.ascension import Ascension
+from .models.char_file import CharFile
+from .models.voice import Voice
 
 class ImageInline(admin.TabularInline):
     model = Image
@@ -18,9 +25,32 @@ class StateInline(admin.TabularInline):
 class ChainSkillInline(admin.StackedInline):
     model = ChainSkill
 
+class ActiveSkillInline(admin.StackedInline):
+    model = ActiveSkill
+
+class EquipSkillInline(admin.StackedInline):
+    model = EquipSkill
+
+class EquipmentInline(admin.StackedInline):
+    model = Equipment    
+
+class BreakthroughInline(admin.StackedInline):
+    model = Breakthrough
+
+class AscensionInline(admin.StackedInline):
+    model = Ascension
+
+class VoiceInline(admin.TabularInline):
+    model = Voice
+
+class CharFileInline(admin.StackedInline):
+    model = CharFile
+
 class CharacterAdmin(admin.ModelAdmin):
     inlines = [
-        ImageInline, StateInline, ChainSkillInline    ]
+        ImageInline, StateInline, ChainSkillInline, ActiveSkillInline, EquipSkillInline,
+        EquipmentInline, BreakthroughInline, AscensionInline, VoiceInline, CharFileInline
+             ]
     list_display = ('name', 'name_alphabet', 'rarity')
 
 # Register your models here.

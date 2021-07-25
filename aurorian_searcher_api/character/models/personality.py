@@ -2,10 +2,9 @@ from django.db import models
 
 class Personality(models.Model):
      
-    name = models.CharField(max_length=50)  
-    icon = models.ImageField(upload_to="personality_icons", height_field=None, width_field=None, max_length=None, null=True, blank=True)  
-    small_gift = models.CharField(max_length=100)
-    big_gift = models.CharField(max_length=100)
+    name = models.CharField(max_length=50, blank=True, null=True)  
+    small_gift = models.CharField(max_length=100, blank=True, null=True)
+    big_gift = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = "Personality"

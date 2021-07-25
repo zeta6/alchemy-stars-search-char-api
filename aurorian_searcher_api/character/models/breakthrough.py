@@ -2,13 +2,13 @@ from django.db import models
 
 class Breakthrough(models.Model):
      
-    brth_id = models.OneToOneField("Character", verbose_name="breakthrough", on_delete=models.CASCADE, db_column="breakthrough")
-    count_1 = models.TextField()
-    count_2 = models.TextField()
-    count_3 = models.TextField()
-    count_4 = models.TextField()
-    count_5 = models.TextField()
-    count_6 = models.TextField()
+    brth_id = models.OneToOneField("Character", related_name="breakthrough", on_delete=models.CASCADE)
+    count_1 = models.TextField(null=True,blank=True)
+    count_2 = models.TextField(null=True,blank=True)
+    count_3 = models.TextField(null=True,blank=True)
+    count_4 = models.TextField(null=True,blank=True)
+    count_5 = models.TextField(null=True,blank=True)
+    count_6 = models.TextField(null=True,blank=True)
 
     class Meta:
         verbose_name = "breakthrough"
