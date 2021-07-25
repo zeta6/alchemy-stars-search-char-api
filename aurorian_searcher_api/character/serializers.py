@@ -84,11 +84,6 @@ class EquipmentSerializer(serializers.ModelSerializer):
             'lv2_state_text', 'lv4_state_text', 'lv5_state_text', 'lv7_state_text', 'lv8_state_text',
             'lv9_state_text')
 
-from .models.breakthrough import Breakthrough
-from .models.ascension import Ascension
-from .models.char_file import CharFile
-from .models.voice import Voice
-
 class BreakthroughSerializer(serializers.ModelSerializer):
     class Meta:
         model = Breakthrough
