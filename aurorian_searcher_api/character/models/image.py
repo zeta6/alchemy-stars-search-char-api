@@ -1,7 +1,7 @@
 from django.db import models
 
 def upload_path(instance, filename):
-    return '{0}/{1}'.format(instance.image_id, filename)
+    return '{0}/image/{1}'.format(instance.image_id, filename)
 
 class Image(models.Model):
      

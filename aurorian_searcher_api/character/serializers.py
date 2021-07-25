@@ -103,7 +103,7 @@ class CharFileSerializer(serializers.ModelSerializer):
 class VoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Voice
-        fields = ('name')
+        fields = ('name',)
 
 class CharacterSerializer(serializers.ModelSerializer):
     image = ImageSerializer(read_only=True)
@@ -119,12 +119,12 @@ class CharacterSerializer(serializers.ModelSerializer):
     equipment = EquipmentSerializer(read_only=True)
     breakthrough = BreakthroughSerializer(read_only=True)
     ascension = AscensionSerializer(read_only=True)
-    charFile = CharFileSerializer(read_only=True)
+    char_file = CharFileSerializer(read_only=True)
     voice = VoiceSerializer(read_only=True)
 
     class Meta:
         model = Character
-        fields = ('id', 'name', 'name_alphabet', 'state', 'image', 'rarity','main_attribute',
+        fields = ('id', 'name', 'name_alphabet', 'icon', 'logo', 'image', 'rarity','main_attribute',
          'sub_attribute', 'char_class', 'faction', 'personality', 'state', 'chain_skill', 'active_skill',
-         'equip_skill', 'equipment', 'breakthrough', 'ascension', 'charFile', 'voice'
-         )
+         'equip_skill', 'equipment', 'breakthrough', 'ascension', 'char_file', 'voice'
+        )

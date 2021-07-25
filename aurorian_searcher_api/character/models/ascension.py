@@ -11,6 +11,11 @@ class Ascension(models.Model):
     class Meta:
         verbose_name = "ascension"
         verbose_name_plural = "ascensions"
+
+    # def save(self, *args, **kwargs):
+    #     self.lv1 = "lv1"
+    #     self.lv2 = "lv2"
+    #     super().save(*args, **kwargs)
     
     # def __str__(self):
-    #     return self.name
+    #     return "ascension"

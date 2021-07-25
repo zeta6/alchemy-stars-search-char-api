@@ -25,7 +25,7 @@ class Character(models.Model):
         verbose_name = "character"
         verbose_name_plural = "characters"
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name_alphabet
 
     def get_absolute_url(self):

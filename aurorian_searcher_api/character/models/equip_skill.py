@@ -26,6 +26,19 @@ class EquipSkill(models.Model):
     class Meta:
         verbose_name = "equip skill"
         verbose_name_plural = "equip skills"
+
+    def save(self, *args, **kwargs):
+        if self.asc2_enhance == False:
+            self.asc2_lv1_text = self.lv1_text
+            self.asc2_lv3_text = self.lv3_text
+            self.asc2_lv6_text = self.lv6_text
+            self.asc2_lv10_text = self.lv10_text
+        if self.asc3_enhance == False:
+            self.asc3_lv1_text = self.asc2_lv1_text
+            self.asc3_lv3_text = self.asc2_lv3_text
+            self.asc3_lv6_text = self.asc2_lv6_text
+            self.asc3_lv10_text = self.asc2_lv10_text
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
