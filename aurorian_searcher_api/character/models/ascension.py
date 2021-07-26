@@ -6,16 +6,11 @@ class Ascension(models.Model):
     lv1 = models.TextField(blank=True, null=True)
     lv2 = models.TextField(blank=True, null=True)
     lv3 = models.TextField(blank=True, null=True)
-    
+
+    def save(self, *args, **kwargs):
+        self.lv1 = "장비 스킬 개방: " + self.asc_id.equip_skill.lv1_text
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "ascension"
         verbose_name_plural = "ascensions"
-
-    # def save(self, *args, **kwargs):
-    #     self.lv1 = "lv1"
-    #     self.lv2 = "lv2"
-    #     super().save(*args, **kwargs)
-    
-    # def __str__(self):
-    #     return "ascension"

@@ -13,6 +13,21 @@ class Breakthrough(models.Model):
     class Meta:
         verbose_name = "breakthrough"
         verbose_name_plural = "breakthroughs"
+
+    def save(self, *args, **kwargs):
+        if self.count_1 == "":
+            self.count_1 = "생명력 +300"
+        if self.count_2 == "":
+            self.count_2 = "방어력 +40" 
+        if self.count_3 == "":
+            self.count_3 = "액티브 기술 강화 : 스킬 쿨 다운이 1턴 감소한다"
+        if self.count_4 == "":
+            self.count_4 = "기초 최대 생명력을 300 + 5 % 상승"
+        if self.count_5 == "":
+            self.count_5 = "기초 방어력을 40 + 5 % 상승"
+        if self.count_6 == "":
+            self.count_6 = "액티브 기술 강화 : 액티브 스킬이 선제 공격으로 변경된다. 전투 시작 시, 즉시 사용할 수 있다."                 
+        super().save(*args, **kwargs)
     
     # def __str__(self):
     #     return self.name
