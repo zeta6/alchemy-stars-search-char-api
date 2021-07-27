@@ -16,6 +16,20 @@ class CharFile(models.Model):
     class Meta:
         verbose_name = "char file"
         verbose_name_plural = "char files"
+
+    def save(self, *args, **kwargs):
+        if self.name == None:
+            self.name = self.file_id.name
+        if self.gender == None:
+            self.gender = "여"
+        if self.element == None:
+            self.element = self.file_id.main_attribute.name
+        if self.affilition == None:
+            self.affilition = self.file_id.faction.name
+        if self.fighting_style == None:
+            self.fighting_style = self.file_id.equipment.name
+            
+        super().save(*args, **kwargs)
     
     def __str__(self):
-        return self.nickname
+        return self.name

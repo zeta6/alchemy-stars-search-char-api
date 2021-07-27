@@ -22,7 +22,7 @@ class Equipment(models.Model):
     lv9_state_text = models.TextField(blank=True, null=True)
 
     class Meta:
-        verbose_name = "equipment"
+        verbose_name = "equipment input only name, image, text"
         verbose_name_plural = "equipments"
 
     def save(self, *args, **kwargs):
