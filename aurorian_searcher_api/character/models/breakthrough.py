@@ -11,7 +11,7 @@ class Breakthrough(models.Model):
     count_6 = models.TextField(null=True,blank=True)
 
     class Meta:
-        verbose_name = "breakthrough"
+        verbose_name = "breakthrough autoinput = 6성 기본 텍스트"
         verbose_name_plural = "breakthroughs"
 
     def save(self, *args, **kwargs):

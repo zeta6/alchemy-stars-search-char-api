@@ -14,7 +14,7 @@ class CharFile(models.Model):
     fighting_style = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
-        verbose_name = "char file"
+        verbose_name = "file autoinput: name, gender(여),elemnet, affil,ftile(equip)"
         verbose_name_plural = "char files"
 
     def save(self, *args, **kwargs):
