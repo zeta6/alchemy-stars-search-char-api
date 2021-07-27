@@ -12,5 +12,5 @@ class Ascension(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name = "ascension input lv2, lv3"
+        verbose_name = "ascension autoinput = lv1: equip_lv1 text"
         verbose_name_plural = "ascensions"

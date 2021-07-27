@@ -24,7 +24,7 @@ class EquipSkill(models.Model):
     asc3_lv10_text = models.TextField(blank=True, null=True)
 
     class Meta:
-        verbose_name = "equip skill input only name, icon, enhanced skill"
+        verbose_name = "equip skill input name, icon, texts, enhanced skill"
         verbose_name_plural = "equip skills"
 
     def save(self, *args, **kwargs):

@@ -41,7 +41,7 @@ class ActiveSkill(models.Model):
     asc3_brth_skill_2_text = models.TextField(blank=True, null=True)
     
     class Meta:
-        verbose_name = "active skill"
+        verbose_name = "active skill chanefalse = 하위스킬입력, brth_br=7:강화없음"
         verbose_name_plural = "active skills"
 
     def save(self, *args, **kwargs):
