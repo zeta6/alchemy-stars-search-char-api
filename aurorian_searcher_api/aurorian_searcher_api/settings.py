@@ -156,13 +156,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 #     os.path.join(BASE_DIR, 'static'),       
 # ]
 
-#corsheaders
-# CORS_ORIGIN_WHITELIST = [
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000'
-# ]
-
-CORS_ORIGIN_ALLOW_ALL = True
+# corsheaders
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://0.0.0.0:3000',
+    'http://54.180.126.198:3000',
+]
 
 CORS_ALLOW_CREDENTIALS = True
 
