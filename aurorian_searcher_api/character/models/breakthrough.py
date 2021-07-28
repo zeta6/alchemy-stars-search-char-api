@@ -24,7 +24,7 @@ class Breakthrough(models.Model):
         if self.count_4 == "":
             self.count_4 = "기초 최대 생명력을 300 + 5 % 상승"
         if self.count_5 == "":
-            self.count_5 = "기초 방어력을 40 + 5 % 상승"
+            self.count_5 = "기초 방어력을 40 + 5 % 상승"    
         if self.count_6 == "":
             self.count_6 = "액티브 기술 강화 : 액티브 스킬이 선제 공격으로 변경된다. 전투 시작 시, 즉시 사용할 수 있다."                 
         super().save(*args, **kwargs)

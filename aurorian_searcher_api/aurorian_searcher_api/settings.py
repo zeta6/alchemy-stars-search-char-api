@@ -133,9 +133,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT= os.path.join(BASE_DIR, 'collect_static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -145,23 +142,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #mediafiles
 
-MEDIA_URL = '/media/' 
+STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR / 'statics')
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+
+
 
 # STATICFILES_DIRS = [
-#     MEDIA_ROOT,
+#     os.path.join(BASE_DIR, 'static'),       
 # ]
 
 #corsheaders
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://13.124.59.83:3000',
-    'http://13.124.59.83:80',
-    'http://13.124.59.83',
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000',
+#     'http://127.0.0.1:3000'
+# ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_ALLOW_ALL = True
+
+
