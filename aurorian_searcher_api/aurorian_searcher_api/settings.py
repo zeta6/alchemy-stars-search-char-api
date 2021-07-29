@@ -36,7 +36,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['54.180.126.198']
 
 
 # Application definition
@@ -157,14 +157,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 # ]
 
 # corsheaders
-CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
-# CORS_ORIGIN_WHITELIST = [
-#     'http://localhost:3000',
-#     'http://54.180.126.198:3000',
-# ]
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://54.180.126.198:3000',
+]
 
 
 
