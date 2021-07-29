@@ -36,7 +36,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['13.124.105.35']
+ALLOWED_HOSTS = ['alchemystars.link']
 
 
 # Application definition
@@ -161,7 +161,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
-    'http://13.124.105.35',
+    'http://alchemystars.link',
 ]
 
 
