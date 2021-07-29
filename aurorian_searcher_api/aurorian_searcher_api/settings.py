@@ -162,7 +162,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
     'http://54.180.126.198:3000',
-    'http://54.180.126.198:80',
+    'http://54.180.126.198',
 ]
 
 
