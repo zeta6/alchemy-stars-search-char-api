@@ -36,7 +36,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["13.124.59.83"]
+ALLOWED_HOSTS = ['alchemystars.link']
 
 
 # Application definition
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,7 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'aurorian_searcher_api.urls'
@@ -133,9 +133,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT= os.path.join(BASE_DIR, 'collect_static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -145,16 +142,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #mediafiles
 
-MEDIA_URL = '/media/' 
+STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR / 'statics')
 
-STATICFILES_DIRS = [
-    MEDIA_ROOT,
-]
+MEDIA_URL = '/media/'
 
-#corsheaders
+MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+
+
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),       
+# ]
+
+# corsheaders
+
+CORS_ALLOW_CREDENTIALS = True
+
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
+    'https://alchemystars.link', 'http://alchemystars.link'
 ]
+
+
+

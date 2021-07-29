@@ -12,9 +12,9 @@ def upload_path(instance, filename):
 class Character(models.Model):
     name = models.CharField(max_length=50)
     name_alphabet = models.CharField(max_length=30)
-    icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, null=True, blank=True) 
-    logo = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, null=True, blank=True) 
-    rarity = models.PositiveSmallIntegerField(blank=True, null=True)
+    icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True) 
+    logo = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True) 
+    rarity = models.CharField(max_length=4, blank=True)
     main_attribute = models.ForeignKey("MainAttribute", verbose_name="주속성", on_delete=models.SET_NULL, null=True, blank=True)
     sub_attribute = models.ForeignKey("SubAttribute", verbose_name="부속성", on_delete=models.SET_NULL, null=True, blank=True)
     char_class = models.ForeignKey("CharClass", verbose_name="클래스", on_delete=models.SET_NULL, null=True, blank=True)

@@ -5,7 +5,7 @@ def upload_path(instance, filename):
 
 class CharClass(models.Model):
      
-    name = models.CharField(max_length=15, blank=True, null=True)  
+    name = models.CharField(max_length=15, blank=True)  
     icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True, null=True)  
 
     class Meta:
