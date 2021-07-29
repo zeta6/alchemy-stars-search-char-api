@@ -31,7 +31,7 @@ with open(secret_json) as f:
 def get_secret(key, secret=secret):
     return secret[key]
 
-SECRET_KEY = get_secret("SECRET_KE")
+SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
