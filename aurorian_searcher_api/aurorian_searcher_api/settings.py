@@ -36,7 +36,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['54.180.126.18']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '54.180.126.198']
 
 
 # Application definition
@@ -162,7 +162,10 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
+    'http://127.0.0.1:3000',
     'http://54.180.126.198:3000',
+    'http://54.180.126.198:80',
+    'http://54.180.126.198',
 ]
 
 
