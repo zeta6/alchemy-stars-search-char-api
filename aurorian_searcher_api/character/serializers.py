@@ -98,7 +98,9 @@ class CharFileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CharFile
         fields = ('name', 'nickname', 'gender', 'height', 'birthday', 'birthplace',
-        'element', 'affilition', 'fighting_style')
+        'element', 'affilition', 'fighting_style', 'story_0', 'story_1', 'story_2',
+        'story_3', 'story_4')
+       
 
 class VoiceSerializer(serializers.ModelSerializer):
     class Meta:
