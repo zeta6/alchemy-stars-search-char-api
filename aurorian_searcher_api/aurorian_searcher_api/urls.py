@@ -26,7 +26,7 @@ router.register(r'characters', views.CharacterView, 'character')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('aaa/', include(router.urls)),
+    path('aa/', include(router.urls)),
 ]
 
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
