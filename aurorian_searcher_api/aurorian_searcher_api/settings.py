@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,7 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'aurorian_searcher_api.urls'
@@ -162,6 +162,9 @@ CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:3000',
     'http://0.0.0.0:3000',
     'http://54.180.126.198:3000',
+    'http://54.180.126.198:80',
+    'http://54.180.126.198:443',
+    'http://54.180.126.198',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
