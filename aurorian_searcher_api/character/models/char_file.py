@@ -12,6 +12,12 @@ class CharFile(models.Model):
     element = models.CharField(max_length=20, blank=True)
     affilition = models.CharField(max_length=100, blank=True)
     fighting_style = models.CharField(max_length=200, blank=True)
+    story_0 = models.TextField(blank=True)
+    story_1 = models.TextField(blank=True)
+    story_2 = models.TextField(blank=True)
+    story_3 = models.TextField(blank=True)
+    story_4 = models.TextField(blank=True)
+
 
     class Meta:
         verbose_name = "file autoinput: name, gender(여),elemnet, affil,ftile(equip)"
