@@ -5,8 +5,8 @@ def upload_path(instance, filename):
 
 class SubAttribute(models.Model):
      
-    name = models.CharField(max_length=10, blank=True, null=True)  
-    icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True, null=True)  
+    name = models.CharField(max_length=10, blank=True)  
+    icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True)  
 
     class Meta:
         verbose_name = "Sattr"
