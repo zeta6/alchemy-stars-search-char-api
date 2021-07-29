@@ -161,7 +161,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
-    'https://alchemystars.link',
+    'https://alchemystars.link',' http://alchemystars.link'
 ]
 
 
