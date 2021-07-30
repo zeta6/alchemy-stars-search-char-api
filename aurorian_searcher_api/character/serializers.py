@@ -127,6 +127,6 @@ class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
         fields = ('id', 'name', 'name_alphabet', 'icon', 'logo', 'image', 'rarity','main_attribute',
-         'sub_attribute', 'char_class', 'faction', 'personality', 'state', 'chain_skill', 'active_skill',
+         'sub_attribute', 'char_class', 'faction', 'personality', 'profile', 'state', 'chain_skill', 'active_skill',
          'equip_skill', 'equipment', 'breakthrough', 'ascension', 'char_file', 'voice'
         )

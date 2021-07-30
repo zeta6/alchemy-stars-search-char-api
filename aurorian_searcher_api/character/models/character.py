@@ -20,6 +20,7 @@ class Character(models.Model):
     char_class = models.ForeignKey("CharClass", verbose_name="클래스", on_delete=models.SET_NULL, null=True, blank=True)
     faction = models.ForeignKey("Faction", verbose_name="소속 세력", on_delete=models.SET_NULL, null=True, blank=True)
     personality = models.ForeignKey("Personality", verbose_name="성격", on_delete=models.SET_NULL, null=True, blank=True)
+    profile = models.TextField(blank=True)
     #state, image, charin_skill, active_skill, equip_skill, equipment, breakthrough, ascension, voice 
     class Meta:
         verbose_name = "character"
