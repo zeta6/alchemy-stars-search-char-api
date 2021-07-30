@@ -21,7 +21,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
-router.register(r'characters', views.CharacterView, 'character')
+router.register(r'character', views.CharacterView, 'character')
+router.register(r'characters', views.CharacterListView, 'character')
 
 urlpatterns = [
     path('gmlsenddl4000/', admin.site.urls),
