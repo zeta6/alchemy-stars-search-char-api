@@ -80,7 +80,7 @@ class EquipSkillSerializer(serializers.ModelSerializer):
 class EquipmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Equipment
-        fields = ('name', 'image', 'lv1_text', 'lv3_text', 'lv6_text', 'lv10_text', 'lv1_state_text',
+        fields = ('name', 'image', 'text', 'lv1_text', 'lv3_text', 'lv6_text', 'lv10_text', 'lv1_state_text',
             'lv2_state_text', 'lv4_state_text', 'lv5_state_text', 'lv7_state_text', 'lv8_state_text',
             'lv9_state_text')
 
