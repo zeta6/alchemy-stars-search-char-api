@@ -80,7 +80,7 @@ class EquipSkillSerializer(serializers.ModelSerializer):
 class EquipmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Equipment
-        fields = ('name', 'image', 'lv1_text', 'lv3_text', 'lv6_text', 'lv10_text', 'lv1_state_text',
+        fields = ('name', 'image', 'text', 'lv1_text', 'lv3_text', 'lv6_text', 'lv10_text', 'lv1_state_text',
             'lv2_state_text', 'lv4_state_text', 'lv5_state_text', 'lv7_state_text', 'lv8_state_text',
             'lv9_state_text')
 
@@ -98,7 +98,9 @@ class CharFileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CharFile
         fields = ('name', 'nickname', 'gender', 'height', 'birthday', 'birthplace',
-        'element', 'affilition', 'fighting_style')
+        'element', 'affilition', 'fighting_style', 'story_0', 'story_1', 'story_2',
+        'story_3', 'story_4')
+       
 
 class VoiceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -125,6 +127,22 @@ class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
         fields = ('id', 'name', 'name_alphabet', 'icon', 'logo', 'image', 'rarity','main_attribute',
-         'sub_attribute', 'char_class', 'faction', 'personality', 'state', 'chain_skill', 'active_skill',
+         'sub_attribute', 'char_class', 'faction', 'personality', 'profile', 'state', 'chain_skill', 'active_skill',
          'equip_skill', 'equipment', 'breakthrough', 'ascension', 'char_file', 'voice'
+        )
+
+class CharacterListSerializer(serializers.ModelSerializer):
+    main_attribute = MainAttributeSerializer(read_only=True)
+    sub_attribute = SubAttributeSerializer(read_only=True)
+    char_class = CharClassSerializer(read_only=True)
+    faction = FactionSerializer(read_only=True)
+    chain_skill = ChainSkillSerializer(read_only=True)
+    active_skill = ActiveSkillSerializer(read_only=True)
+    equip_skill = EquipSkillSerializer(read_only=True)
+
+    class Meta:
+        model = Character
+        fields = ('id', 'name', 'icon', 'rarity','main_attribute',
+         'sub_attribute', 'char_class', 'faction', 'chain_skill', 'active_skill',
+         'equip_skill'
         )
