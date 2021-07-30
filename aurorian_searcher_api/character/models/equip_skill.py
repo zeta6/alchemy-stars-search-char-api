@@ -12,33 +12,27 @@ class EquipSkill(models.Model):
     lv3_text = models.TextField(blank=True)
     lv6_text = models.TextField(blank=True)
     lv10_text = models.TextField(blank=True)
-    asc2_enhance = models.BooleanField(default=False)
-    asc2_lv1_text = models.TextField(blank=True)
-    asc2_lv3_text = models.TextField(blank=True)
-    asc2_lv6_text = models.TextField(blank=True)
-    asc2_lv10_text = models.TextField(blank=True)
-    asc3_enhance = models.BooleanField(default=False)
-    asc3_lv1_text = models.TextField(blank=True)
-    asc3_lv3_text = models.TextField(blank=True)
-    asc3_lv6_text = models.TextField(blank=True)
-    asc3_lv10_text = models.TextField(blank=True)
+    br1_up = models.BooleanField(default=False)
+    br2_up = models.BooleanField(default=False)
+    asc2_up = models.BooleanField(default=False)
+    asc3_up = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "equip skill input name, icon, texts, enhanced skill"
         verbose_name_plural = "equip skills"
 
-    def save(self, *args, **kwargs):
-        if self.asc2_enhance == False:
-            self.asc2_lv1_text = self.lv1_text
-            self.asc2_lv3_text = self.lv3_text
-            self.asc2_lv6_text = self.lv6_text
-            self.asc2_lv10_text = self.lv10_text
-        if self.asc3_enhance == False:
-            self.asc3_lv1_text = self.asc2_lv1_text
-            self.asc3_lv3_text = self.asc2_lv3_text
-            self.asc3_lv6_text = self.asc2_lv6_text
-            self.asc3_lv10_text = self.asc2_lv10_text
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.asc2_enhance == False:
+    #         self.asc2_lv1_text = self.lv1_text
+    #         self.asc2_lv3_text = self.lv3_text
+    #         self.asc2_lv6_text = self.lv6_text
+    #         self.asc2_lv10_text = self.lv10_text
+    #     if self.asc3_enhance == False:
+    #         self.asc3_lv1_text = self.asc2_lv1_text
+    #         self.asc3_lv3_text = self.asc2_lv3_text
+    #         self.asc3_lv6_text = self.asc2_lv6_text
+    #         self.asc3_lv10_text = self.asc2_lv10_text
+    #     super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
