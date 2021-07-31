@@ -15,6 +15,7 @@ from .models.breakthrough import Breakthrough
 from .models.ascension import Ascension
 from .models.char_file import CharFile
 from .models.voice import Voice
+from .models.special_role import SpecialRole
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -114,6 +115,11 @@ class VoiceSerializer(serializers.ModelSerializer):
         model = Voice
         fields = ('name',)
 
+class SpecialRoleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SpecialRole
+        fields = ('tile_change', 'tile_reset', 'teleport', 'heal')
+
 class CharacterSerializer(serializers.ModelSerializer):
     image = ImageSerializer(read_only=True)
     main_attribute = MainAttributeSerializer(read_only=True)
@@ -146,10 +152,11 @@ class CharacterListSerializer(serializers.ModelSerializer):
     chain_skill = ChainSkillSerializer(read_only=True)
     active_skill = ActiveSkillSerializer(read_only=True)
     equip_skill = EquipSkillSerializer(read_only=True)
+    special_role = SpecialRoleSerializer(read_only=True)
 
     class Meta:
         model = Character
         fields = ('id', 'name', 'icon', 'rarity','main_attribute',
          'sub_attribute', 'char_class', 'faction', 'chain_skill', 'active_skill',
-         'equip_skill'
+         'equip_skill', 'special_role'
         )
