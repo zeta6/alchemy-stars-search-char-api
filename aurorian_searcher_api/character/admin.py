@@ -41,8 +41,8 @@ class BreakthroughInline(admin.StackedInline):
 class AscensionInline(admin.StackedInline):
     model = Ascension
 
-class SpecialRoleInLine(admin.TabularInline):
-    model = SpecialRole
+# class SpecialRoleInLine(admin.TabularInline):
+#     model = SpecialRole
 
 class VoiceInline(admin.TabularInline):
     model = Voice
@@ -53,7 +53,7 @@ class CharFileInline(admin.StackedInline):
 class CharacterAdmin(admin.ModelAdmin):
     inlines = [
         ImageInline, StateInline, ChainSkillInline, ActiveSkillInline, EquipSkillInline,
-        EquipmentInline, BreakthroughInline, AscensionInline, VoiceInline, SpecialRoleInLine,
+        EquipmentInline, BreakthroughInline, AscensionInline, VoiceInline,
          CharFileInline ]
     list_display = ('name', 'name_alphabet', 'rarity')
 

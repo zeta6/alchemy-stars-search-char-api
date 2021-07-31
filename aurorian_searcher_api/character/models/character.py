@@ -5,6 +5,7 @@ from .sub_attr import SubAttribute
 from .char_class import CharClass
 from .faction import Faction
 from .personality import Personality
+from .special_role import SpecialRole
 
 def upload_path(instance, filename):
     return '{0}/icon_logo/{1}'.format(instance.name_alphabet, filename)
@@ -20,6 +21,7 @@ class Character(models.Model):
     char_class = models.ForeignKey("CharClass", verbose_name="클래스", on_delete=models.SET_NULL, null=True, blank=True)
     faction = models.ForeignKey("Faction", verbose_name="소속 세력", on_delete=models.SET_NULL, null=True, blank=True)
     personality = models.ForeignKey("Personality", verbose_name="성격", on_delete=models.SET_NULL, null=True, blank=True)
+    special_role = models.ForeignKey("SpecialRole", verbose_name="특이사항", on_delete=models.SET_NULL, null=True)
     profile = models.TextField(blank=True)
     #state, image, charin_skill, active_skill, equip_skill, equipment, breakthrough, ascension, voice 
     class Meta:
