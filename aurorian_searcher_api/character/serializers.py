@@ -15,6 +15,7 @@ from .models.breakthrough import Breakthrough
 from .models.ascension import Ascension
 from .models.char_file import CharFile
 from .models.voice import Voice
+from .models.special_role import SpecialRole
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -55,28 +56,35 @@ class StateSerializer(serializers.ModelSerializer):
 class ChainSkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChainSkill
-        fields = ('name', 'icon', 'lv1_tiles','lv1_text', 'lv2_tiles', 'lv2_text', 'lv3_tiles', 'lv3_text')
+        fields = ('name', 'icon', 'lv1_tiles','lv1_text', 'lv2_tiles', 'lv2_text', 'lv3_tiles', 'lv3_text',
+        'br1_up', 'br2_up', 'asc2_up', 'asc3_up')
 
 class ActiveSkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = ActiveSkill
-        fields = ('name', 'cooltime', 'preemptive','icon', 'text', 'brth_skill_1_br', 'brth_skill_2_br',
-         'asc0_brth_skill_1_cooltime', 'asc0_brth_skill_1_preemptive', 'asc0_brth_skill_1_text',
-         'asc0_brth_skill_2_cooltime', 'asc0_brth_skill_2_preemptive', 'asc0_brth_skill_2_text',
-         'asc2_brth_skill_0_cooltime', 'asc2_brth_skill_0_preemptive', 'asc2_brth_skill_0_text',
-         'asc2_brth_skill_1_cooltime', 'asc2_brth_skill_1_preemptive', 'asc2_brth_skill_1_text',
-         'asc2_brth_skill_2_cooltime', 'asc2_brth_skill_2_preemptive', 'asc2_brth_skill_2_text',
-         'asc3_brth_skill_0_cooltime', 'asc3_brth_skill_0_preemptive', 'asc3_brth_skill_0_text',
-         'asc3_brth_skill_1_cooltime', 'asc3_brth_skill_1_preemptive', 'asc3_brth_skill_1_text',
-         'asc3_brth_skill_2_cooltime', 'asc3_brth_skill_2_preemptive', 'asc3_brth_skill_2_text')
+        fields = ('name', 'cooltime', 'preemptive','icon', 'text',
+         'br1_up', 'br2_up', 'asc2_up', 'asc3_up')
+        
+        #  'brth_skill_1_br', 'brth_skill_2_br',
+        #  'asc0_brth_skill_1_cooltime', 'asc0_brth_skill_1_preemptive', 'asc0_brth_skill_1_text',
+        #  'asc0_brth_skill_2_cooltime', 'asc0_brth_skill_2_preemptive', 'asc0_brth_skill_2_text',
+        #  'asc2_brth_skill_0_cooltime', 'asc2_brth_skill_0_preemptive', 'asc2_brth_skill_0_text',
+        #  'asc2_brth_skill_1_cooltime', 'asc2_brth_skill_1_preemptive', 'asc2_brth_skill_1_text',
+        #  'asc2_brth_skill_2_cooltime', 'asc2_brth_skill_2_preemptive', 'asc2_brth_skill_2_text',
+        #  'asc3_brth_skill_0_cooltime', 'asc3_brth_skill_0_preemptive', 'asc3_brth_skill_0_text',
+        #  'asc3_brth_skill_1_cooltime', 'asc3_brth_skill_1_preemptive', 'asc3_brth_skill_1_text',
+        #  'asc3_brth_skill_2_cooltime', 'asc3_brth_skill_2_preemptive', 'asc3_brth_skill_2_text')
 
 class EquipSkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = EquipSkill
-        fields = ('name', 'icon', 'lv1_text', 'lv3_text', 'lv6_text', 'lv10_text', 'asc2_enhance',
-            'asc2_lv1_text', 'asc2_lv3_text', 'asc2_lv6_text', 'asc2_lv10_text', 'asc3_enhance',
-            'asc3_lv1_text', 'asc3_lv3_text', 'asc3_lv6_text', 'asc3_lv10_text'    
-            )
+        fields = ('name', 'icon', 'lv1_text', 'lv3_text', 'lv6_text', 'lv10_text',
+        'br1_up', 'br2_up', 'asc2_up', 'asc3_up')
+    
+        #  'asc2_enhance',
+        #     'asc2_lv1_text', 'asc2_lv3_text', 'asc2_lv6_text', 'asc2_lv10_text', 'asc3_enhance',
+        #     'asc3_lv1_text', 'asc3_lv3_text', 'asc3_lv6_text', 'asc3_lv10_text'    
+        #
 class EquipmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Equipment
@@ -106,6 +114,11 @@ class VoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Voice
         fields = ('name',)
+
+class SpecialRoleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SpecialRole
+        fields = ('tile_change', 'tile_reset', 'teleport', 'heal')
 
 class CharacterSerializer(serializers.ModelSerializer):
     image = ImageSerializer(read_only=True)
@@ -139,10 +152,11 @@ class CharacterListSerializer(serializers.ModelSerializer):
     chain_skill = ChainSkillSerializer(read_only=True)
     active_skill = ActiveSkillSerializer(read_only=True)
     equip_skill = EquipSkillSerializer(read_only=True)
+    special_role = SpecialRoleSerializer(read_only=True)
 
     class Meta:
         model = Character
         fields = ('id', 'name', 'icon', 'rarity','main_attribute',
          'sub_attribute', 'char_class', 'faction', 'chain_skill', 'active_skill',
-         'equip_skill'
+         'equip_skill', 'special_role'
         )

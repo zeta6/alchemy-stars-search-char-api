@@ -155,3 +155,4 @@ cython_debug/
 /aurorian_searcher_api/secret_key.json
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+aurorian_searcher_api/character/migrations/

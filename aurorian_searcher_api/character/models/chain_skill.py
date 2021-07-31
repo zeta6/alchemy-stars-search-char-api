@@ -14,6 +14,10 @@ class ChainSkill(models.Model):
     lv2_text = models.TextField(blank=True)
     lv3_tiles = models.CharField(max_length=4, blank=True)
     lv3_text = models.TextField(blank=True)
+    br1_up = models.BooleanField(default=False)
+    br2_up = models.BooleanField(default=False)
+    asc2_up = models.BooleanField(default=False)
+    asc3_up = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "chain skill"

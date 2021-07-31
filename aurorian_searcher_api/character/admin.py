@@ -15,6 +15,7 @@ from .models.breakthrough import Breakthrough
 from .models.ascension import Ascension
 from .models.char_file import CharFile
 from .models.voice import Voice
+from .models.special_role import SpecialRole
 
 class ImageInline(admin.TabularInline):
     model = Image
@@ -40,6 +41,9 @@ class BreakthroughInline(admin.StackedInline):
 class AscensionInline(admin.StackedInline):
     model = Ascension
 
+class SpecialRoleInLine(admin.StackedInline):
+    model = SpecialRole
+
 class VoiceInline(admin.TabularInline):
     model = Voice
 
@@ -49,8 +53,8 @@ class CharFileInline(admin.StackedInline):
 class CharacterAdmin(admin.ModelAdmin):
     inlines = [
         ImageInline, StateInline, ChainSkillInline, ActiveSkillInline, EquipSkillInline,
-        EquipmentInline, BreakthroughInline, AscensionInline, VoiceInline, CharFileInline
-             ]
+        EquipmentInline, BreakthroughInline, AscensionInline, VoiceInline, SpecialRoleInLine,
+         CharFileInline ]
     list_display = ('name', 'name_alphabet', 'rarity')
 
 # Register your models here.
