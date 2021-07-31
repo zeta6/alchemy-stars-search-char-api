@@ -8,7 +8,7 @@ class Ascension(models.Model):
     lv3 = models.TextField(blank=True)
 
     def save(self, *args, **kwargs):
-        self.lv1 = "장비 스킬 개방: " + self.asc_id.equip_skill.lv1_text
+        self.lv1 = "[장비 스킬 개방]: " + self.asc_id.equip_skill.lv1_text
         super().save(*args, **kwargs)
 
     class Meta:
