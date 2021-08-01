@@ -5,7 +5,7 @@ def upload_path(instance, filename):
 
 class ChainSkill(models.Model):
      
-    skill_id = models.OneToOneField("Character", related_name="chain_skill", on_delete=models.CASCADE)
+    chain_skill_id = models.OneToOneField("Character", related_name="chain_skill", on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=True)
     icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True)
     lv1_tiles = models.CharField(max_length=4, blank=True)

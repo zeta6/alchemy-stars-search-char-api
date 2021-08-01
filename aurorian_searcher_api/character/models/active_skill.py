@@ -5,7 +5,7 @@ def upload_path(instance, filename):
 
 class ActiveSkill(models.Model):
      
-    skill_id = models.OneToOneField("Character", related_name="active_skill", on_delete=models.CASCADE)
+    active_skill_id = models.OneToOneField("Character", related_name="active_skill", on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=True)
     cooltime = models.CharField(max_length=6, blank=True)
     preemptive = models.CharField(max_length=4, blank=True)
