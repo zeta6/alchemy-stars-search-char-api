@@ -5,7 +5,7 @@ def upload_path(instance, filename):
 
 class EquipSkill(models.Model):
      
-    skill_id = models.OneToOneField("Character", related_name="equip_skill", on_delete=models.CASCADE)
+    equip_skill_id = models.OneToOneField("Character", related_name="equip_skill", on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=True)
     icon = models.ImageField(upload_to=upload_path, height_field=None, width_field=None, max_length=None, blank=True)
     lv1_text = models.TextField(blank=True)
