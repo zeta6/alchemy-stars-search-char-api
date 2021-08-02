@@ -52,7 +52,7 @@ class CharFileInline(admin.StackedInline):
 
 class CharacterAdmin(admin.ModelAdmin):
     inlines = [
-        ImageInline, StateInline, ChainSkillInline, ActiveSkillInline, EquipSkillInline,
+        ImageInline, StateInline, ActiveSkillInline, ChainSkillInline, EquipSkillInline,
         EquipmentInline, BreakthroughInline, AscensionInline, VoiceInline, SpecialRoleInLine,
          CharFileInline ]
     list_display = ('name', 'name_alphabet', 'rarity')
