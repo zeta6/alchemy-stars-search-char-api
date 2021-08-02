@@ -1,7 +1,7 @@
 from django.db import models
 
 def upload_path(instance, filename):
-    return '{0}/skill_icon/{1}'.format(instance.skill_id, filename)
+    return '{0}/skill_icon/{1}'.format(instance.active_skill_id, filename)
 
 class ActiveSkill(models.Model):
      
