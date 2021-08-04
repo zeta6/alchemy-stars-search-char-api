@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import json
 import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,20 +24,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-secret_json = BASE_DIR / "secret_key.json"
+secrets_json = BASE_DIR / "secrets.json"
 
-with open(secret_json) as f:
-    secret = json.loads(f.read())
+with open(secrets_json) as f:
+    secrets = json.loads(f.read())
 
-def get_secret(key, secret=secret):
-    return secret[key]
+def get_secret(key, secrets=secrets):
+    return secrets[key]
 
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['alchemystars.link']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -50,7 +51,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'corsheaders',
+    ##DRF
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    ##dj-rest-auth
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    # django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
+    ###character api
     'character',
 ]
 
@@ -160,9 +174,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = [
-    'https://alchemystars.link', 'http://alchemystars.link'
-]
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 
