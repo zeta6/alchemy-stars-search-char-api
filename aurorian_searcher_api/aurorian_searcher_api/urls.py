@@ -25,8 +25,15 @@ router.register(r'character', views.CharacterView, 'character')
 router.register(r'characters', views.CharacterListView, 'character')
 
 urlpatterns = [
-    path('gmlsenddl4000/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    # path('users/', include('dj_rest_auth.urls')),
+    # path('users/', include('dj_rest_auth.registration.urls')),
+    # path('users/', include('allauth.urls')),
+    # path('users/', include('users.urls')),
+    path('accounts/', include('dj_rest_auth.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
 
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
