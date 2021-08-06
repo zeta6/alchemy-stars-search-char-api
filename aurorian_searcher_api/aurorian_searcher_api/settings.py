@@ -10,9 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 import json
 import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,20 +25,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-secret_json = BASE_DIR / "secret_key.json"
+secrets_json = BASE_DIR / "secrets.json"
 
-with open(secret_json) as f:
-    secret = json.loads(f.read())
+with open(secrets_json) as f:
+    secrets = json.loads(f.read())
 
-def get_secret(key, secret=secret):
-    return secret[key]
+def get_secret(key, secrets=secrets):
+    return secrets[key]
 
 SECRET_KEY = get_secret("SECRET_KEY")
-
+STATE = get_secret("STATE")
+SOCIAL_AUTH_GOOGLE_CLIENT_ID = get_secret("SOCIAL_AUTH_GOOGLE_CLIENT_ID")
+SOCIAL_AUTH_GOOGLE_SECRET = get_secret("SOCIAL_AUTH_GOOGLE_SECRET")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['alchemystars.link']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -48,10 +52,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django_extensions',
     'corsheaders',
+    ##DRF
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    ##dj-rest-auth
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    # django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
+    ###character api
+    'accounts',
     'character',
+    ###accounts
+    # 'users',
 ]
 
 MIDDLEWARE = [
@@ -160,9 +181,36 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = [
-    'https://alchemystars.link', 'http://alchemystars.link'
-]
+CORS_ORIGIN_ALLOW_ALL = True
 
+## auth
 
+SITE_ID = 2
 
+# AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.User'
+
+## rest-framework auth
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ),
+}
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+REST_USE_JWT = True
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+}
