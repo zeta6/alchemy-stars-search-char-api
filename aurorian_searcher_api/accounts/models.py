@@ -39,6 +39,10 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, max_length=255)
+    provider = models.CharField(max_length=20, blank=True)
+    provider_id =  models.CharField(max_length=40, blank=True)
+    access_token = models.TextField(blank=True)
+    fav_char = models.TextField(blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

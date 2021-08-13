@@ -40,7 +40,7 @@ SOCIAL_AUTH_GOOGLE_SECRET = get_secret("SOCIAL_AUTH_GOOGLE_SECRET")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -179,7 +179,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 
 # corsheaders
 
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = False
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -193,7 +193,8 @@ AUTH_USER_MODEL = 'accounts.User'
 ## rest-framework auth
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
