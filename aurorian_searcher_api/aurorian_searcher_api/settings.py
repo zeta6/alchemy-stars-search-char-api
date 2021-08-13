@@ -72,7 +72,6 @@ INSTALLED_APPS = [
     'accounts',
     'character',
     ###accounts
-    # 'users',
 ]
 
 MIDDLEWARE = [
