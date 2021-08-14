@@ -24,7 +24,7 @@ def google_login(request):
             return JsonResponse(userDict)
 
     except User.DoesNotExist:
-        User.objects.create(email=userjson["email"], provider=userjson["provider"], provider_id=userjson["id"], access_token=userjson["access_token"])
+        User.objects.create(email=userjson["email"], provider=userjson["provider"], provider_id=userjson["id"], access_token=userjson["access_token"], fav_char=userjson["fav_char"])
         user = User.objects.get(email=userjson["email"])
         userDict = { "email" : user.email, "provider" : user.provider, "id" : user.provider_id, "access_token" : user.access_token, "fav_char" : user.fav_char }
         return JsonResponse(userDict)
