@@ -30,6 +30,16 @@ def google_login(request):
         return JsonResponse(userDict)
 
 @method_decorator(csrf_exempt, name="dispatch")
+def google_withdrawal(request):
+    userjson = json.loads(request.body)
+    user = User.objects.get(email=userjson["email"])
+    if user.access_token == userjson["access_token"]:
+        user.delete()
+        return JsonResponse({ "del" : "success" })
+    else:
+        return JsonResponse({'err_msg': 'access token error'}, status=status.HTTP_400_BAD_REQUEST)    
+
+@method_decorator(csrf_exempt, name="dispatch")
 def fav_char_update(request):
     userjson = json.loads(request.body)
     user = User.objects.get(email=userjson["email"])
@@ -50,3 +60,4 @@ def fav_char(request):
         return JsonResponse(resjson)
     else:
         return JsonResponse({'err_msg': 'access token error'}, status=status.HTTP_400_BAD_REQUEST)
+
