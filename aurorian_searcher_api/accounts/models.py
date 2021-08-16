@@ -43,6 +43,7 @@ class User(AbstractUser):
     provider_id =  models.CharField(max_length=40, blank=True)
     access_token = models.TextField(blank=True)
     fav_char = models.TextField(blank=True)
+    owned_char = models.TextField(blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

@@ -20,13 +20,13 @@ def google_login(request):
         else:
             user.access_token = userjson["access_token"]
             user.save()
-            userDict = { "email" : user.email, "provider" : user.provider, "id" : user.provider_id, "access_token" : user.access_token, "fav_char" : user.fav_char }
+            userDict = { "email" : user.email, "provider" : user.provider, "id" : user.provider_id, "access_token" : user.access_token, "fav_char" : user.fav_char, "owned_char" : user.owned_char }
             return JsonResponse(userDict)
 
     except User.DoesNotExist:
-        User.objects.create(email=userjson["email"], provider=userjson["provider"], provider_id=userjson["id"], access_token=userjson["access_token"], fav_char=userjson["fav_char"])
+        User.objects.create(email=userjson["email"], provider=userjson["provider"], provider_id=userjson["id"], access_token=userjson["access_token"], fav_char=userjson["fav_char"], owned_char=userjson["owned_char"])
         user = User.objects.get(email=userjson["email"])
-        userDict = { "email" : user.email, "provider" : user.provider, "id" : user.provider_id, "access_token" : user.access_token, "fav_char" : user.fav_char }
+        userDict = { "email" : user.email, "provider" : user.provider, "id" : user.provider_id, "access_token" : user.access_token, "fav_char" : user.fav_char, "owned_char" : user.owned_char }
         return JsonResponse(userDict)
 
 @method_decorator(csrf_exempt, name="dispatch")
@@ -61,3 +61,26 @@ def fav_char(request):
     else:
         return JsonResponse({'err_msg': 'access token error'}, status=status.HTTP_400_BAD_REQUEST)
 
+
+@method_decorator(csrf_exempt, name="dispatch")
+def owned_char_update(request):
+    userjson = json.loads(request.body)
+    user = User.objects.get(email=userjson["email"])
+    if user.access_token == userjson["access_token"]:
+        user.owned_char = userjson["owned_char"]
+        user.save()
+        resjson = { "owned_char" : user.owned_char }
+        return JsonResponse(resjson)
+    else:
+        return JsonResponse({'err_msg': 'access token error'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+def owned_char(request):
+    userjson = json.loads(request.body)
+    user = User.objects.get(email=userjson["email"])
+    if user.access_token == userjson["access_token"]:
+        resjson = { "owned_char" : user.owned_char }
+        return JsonResponse(resjson)
+    else:
+        return JsonResponse({'err_msg': 'access token error'}, status=status.HTTP_400_BAD_REQUEST)

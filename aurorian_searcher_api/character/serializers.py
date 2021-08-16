@@ -153,10 +153,13 @@ class CharacterListSerializer(serializers.ModelSerializer):
     active_skill = ActiveSkillSerializer(read_only=True)
     equip_skill = EquipSkillSerializer(read_only=True)
     special_role = SpecialRoleSerializer(read_only=True)
+    breakthrough = BreakthroughSerializer(read_only=True)
+    ascension = AscensionSerializer(read_only=True)
+    voice = VoiceSerializer(read_only=True)
 
     class Meta:
         model = Character
         fields = ('id', 'name', 'icon', 'rarity','main_attribute',
          'sub_attribute', 'char_class', 'faction', 'chain_skill', 'active_skill',
-         'equip_skill', 'special_role'
+         'equip_skill', 'special_role', 'breakthrough', 'ascension', 'voice'
         )
