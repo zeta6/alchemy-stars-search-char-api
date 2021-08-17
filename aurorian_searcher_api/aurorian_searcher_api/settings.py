@@ -34,11 +34,13 @@ def get_secret(key, secrets=secrets):
     return secrets[key]
 
 SECRET_KEY = get_secret("SECRET_KEY")
+GOOGLE_CLIENT_ID = get_secret("GOOGLE_CLIENT_ID")
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['alchemystars.link']
-
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -168,6 +170,7 @@ CORS_ORIGIN_WHITELIST = [
     'https://alchemystars.link', 'http://alchemystars.link'
 ]
 
+# CORS_ALLOW_ALL_ORIGINS = True
 
 # AUTH_USER_MODEL = 'accounts.User'
 AUTH_USER_MODEL = 'accounts.User'

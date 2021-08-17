@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 import json
 from google.auth import jwt
 
+
 def google_login(request):
     token = request.META['HTTP_AUTHORIZATION']
     userjson = jwt.decode(token, verify=None)
@@ -27,11 +28,13 @@ def google_login(request):
             return JsonResponse(userDict)
 
     except User.DoesNotExist:
-        User.objects.create(email=userjson["email"], provider="google", sub=userjson["sub"], azp=userjson["azp"], fav_char="[]", owned_char="[]")
-        user = User.objects.get(email=userjson["email"])
-        userDict = { "email" : user.email, "provider" : user.provider,  "fav_char" : user.fav_char, "owned_char" : user.owned_char }
-        return JsonResponse(userDict)
-
+        if userjson["azp"] == getattr(settings, "GOOGLE_CLIENT_ID"):
+            User.objects.create(email=userjson["email"], provider="google", sub=userjson["sub"], azp=userjson["azp"], fav_char="[]", owned_char="[]")
+            user = User.objects.get(email=userjson["email"])
+            userDict = { "email" : user.email, "provider" : user.provider,  "fav_char" : user.fav_char, "owned_char" : user.owned_char }
+            return JsonResponse(userDict)
+        else:
+            return JsonResponse({'err_msg': 'login error'}, status=status.HTTP_400_BAD_REQUEST)
 
 def google_withdrawal(request):
     token = request.META['HTTP_AUTHORIZATION']
