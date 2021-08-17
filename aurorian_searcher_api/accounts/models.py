@@ -40,8 +40,14 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, max_length=255)
     provider = models.CharField(max_length=20, blank=True)
-    provider_id =  models.CharField(max_length=40, blank=True)
-    access_token = models.TextField(blank=True)
+    azp = models.TextField(blank=True)
+    aud = models.TextField(null=True)
+    sub = models.TextField(blank=True)
+    at_hash = models.TextField(null=True)
+    iat = models.PositiveIntegerField(null=True)
+    exp = models.PositiveIntegerField(null=True)
+    jti = models.TextField(null=True)
+
     fav_char = models.TextField(blank=True)
     owned_char = models.TextField(blank=True)
 
