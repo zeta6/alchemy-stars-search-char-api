@@ -55,7 +55,7 @@ class CharacterAdmin(admin.ModelAdmin):
         ImageInline, VoiceInline, StateInline, ActiveSkillInline, ChainSkillInline, EquipSkillInline,
         EquipmentInline, BreakthroughInline, AscensionInline, SpecialRoleInLine,
          CharFileInline ]
-    list_display = ('name', 'name_alphabet', 'rarity')
+    list_display = ('id', 'name', 'name_alphabet', 'rarity')
 
 # Register your models here.
 

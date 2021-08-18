@@ -37,10 +37,10 @@ SECRET_KEY = get_secret("SECRET_KEY")
 GOOGLE_CLIENT_ID = get_secret("GOOGLE_CLIENT_ID")
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['alchemystars.link']
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['alchemystars.link']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     ###character api
     'accounts',
     'character',
+    'recruit'
 ]
 
 MIDDLEWARE = [
@@ -166,11 +167,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = [
-    'https://alchemystars.link', 'http://alchemystars.link'
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'https://alchemystars.link', 'http://alchemystars.link'
+# ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 # AUTH_USER_MODEL = 'accounts.User'
 AUTH_USER_MODEL = 'accounts.User'
