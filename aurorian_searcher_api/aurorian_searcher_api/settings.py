@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     ###character api
     'accounts',
     'character',
+    'recruit'
 ]
 
 MIDDLEWARE = [
