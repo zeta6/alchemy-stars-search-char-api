@@ -39,7 +39,7 @@ GOOGLE_CLIENT_ID = get_secret("GOOGLE_CLIENT_ID")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['alchemystars.link']
+ALLOWED_HOSTS = ['api.alchemystars.link','alchemystars.link', '172.31.4.23', '54.180.137.49']
 # ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -168,10 +168,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
-    'https://alchemystars.link', 'http://alchemystars.link'
+   'https://alchemystars.link', 'http://alchemystars.link'
 ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
+## CORS_ALLOW_ALL_ORIGINS = True
 
 # AUTH_USER_MODEL = 'accounts.User'
 AUTH_USER_MODEL = 'accounts.User'
